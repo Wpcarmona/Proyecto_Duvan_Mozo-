@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +13,30 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  validationUserMessage = {
+    Documento: [
+      { type: 'required', message: 'Ingrese su documento de identificacion' },
+      {
+        type: 'minlength',
+        message: 'El documento debe tener minimo 8 digitos',
+      },
+    ],
+  };
+
+  validationFormUser: FormGroup;
+
+  constructor(
+    public formbuider: FormBuilder,
+  ) {}
+
+  ngOnInit() {
+    this.validationFormUser = this.formbuider.group({
+      Documento: new FormControl(
+        '',
+        Validators.compose([Validators.required, Validators.minLength(8)])
+      ),
+    });
+  }
+
 
 }
