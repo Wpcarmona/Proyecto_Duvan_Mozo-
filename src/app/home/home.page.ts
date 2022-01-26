@@ -27,6 +27,7 @@ export class HomePage {
 
   constructor(
     public formbuider: FormBuilder,
+    //hola esta es una prueba
   ) {}
 
   ngOnInit() {
@@ -38,5 +39,5 @@ export class HomePage {
     });
   }
 
-
+  
 }
